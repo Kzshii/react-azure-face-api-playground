@@ -3,6 +3,8 @@ import React from 'react';
 import CreatePersonGroupForm from './components/CreatePersonGroupForm';
 import CreatePersonForm from './components/CreatePersonForm';
 import AddPersonFaceForm from './components/AddPersonFaceForm';
+import DetectFaceForm from './components/DetectFaceForm';
+import IdentifyFaceForm from './components/IdentifyFaceForm';
 
 import logo from './logo.svg';
 import './App.css';
@@ -19,6 +21,8 @@ const App = () => (
     <CreatePersonGroupForm />
     <CreatePersonForm />
     <AddPersonFaceForm />
+    <DetectFaceForm />
+    <IdentifyFaceForm />
   </div>
 );
 
