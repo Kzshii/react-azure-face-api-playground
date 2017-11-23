@@ -10,10 +10,10 @@ import { detectFace } from '../api/Detect';
 const DetectFaceForm = ({
     url,
     returnFaceId,
-    lastCreatedFaceId,
+    lastDetectedFaceId,
     setUrl,
     setReturnFaceId,
-    setLastCreatedFaceId,
+    setLastDetectedFaceId,
     ...props
 }) => {
     return (
@@ -35,13 +35,13 @@ const DetectFaceForm = ({
 
                 detectFace(params)
                     .then((response) => response.json())
-                    .then((body) => setLastCreatedFaceId(body.faceId))
+                    .then((body) => setLastDetectedFaceId(body.faceId))
                     .catch(console.error);
             }}>Detect Face</button>
             <br />
             {
-                lastCreatedFaceId
-                    && <p>Last Created FaceId: {lastCreatedFaceId}</p>
+                lastDetectedFaceId
+                    && <p>Last Detected FaceId: {lastDetectedFaceId}</p>
             }
        </div>
     )  
@@ -50,7 +50,7 @@ const DetectFaceForm = ({
 const enhance = compose (
     withState('url', 'setUrl', null),
     withState('returnFaceId', 'setReturnFaceId', null),
-    withState('lastCreatedFaceId', 'setLastCreatedFaceId', null),
+    withState('lastDetectedFaceId', 'setLastDetectedFaceId', null),
     withProps((props) => ({ 
         ...props,
         detectFace,
