@@ -13,7 +13,7 @@ Actually it has these functionalities implemented:
  - [x] Create Person Group
  - [x] Create Person into Person Group
  - [x] Add Face to Person
- - [] Detect and create a Face Id
+ - [x] Detect and create a Face Id
  - [] Identify Face Id
 
 ## How to run it
