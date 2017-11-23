@@ -4,6 +4,8 @@ import CreatePersonGroupForm from './components/CreatePersonGroupForm';
 import CreatePersonForm from './components/CreatePersonForm';
 import AddPersonFaceForm from './components/AddPersonFaceForm';
 import DetectFaceForm from './components/DetectFaceForm';
+import TrainPersonGroupId from './components/TrainPersonGroupIdForm';
+import StatusTrainPersonGroupId from './components/StatusTrainPersonGroupIdForm';
 import IdentifyFaceForm from './components/IdentifyFaceForm';
 
 import logo from './logo.svg';
@@ -22,6 +24,8 @@ const App = () => (
     <CreatePersonForm />
     <AddPersonFaceForm />
     <DetectFaceForm />
+    <TrainPersonGroupId />
+    <StatusTrainPersonGroupId />
     <IdentifyFaceForm />
   </div>
 );

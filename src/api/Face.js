@@ -2,7 +2,7 @@ const faceApiBaseUrl = 'https://westcentralus.api.cognitive.microsoft.com';
 
 const headers = {
     'Content-Type': 'application/json',
-    'Ocp-Apim-Subscription-Key': process.env.AZURE_FACE_API_KEY,
+    'Ocp-Apim-Subscription-Key': 'process.env.AZURE_FACE_API_KEY',
 };
 
 const createFetch = (path, params) => {

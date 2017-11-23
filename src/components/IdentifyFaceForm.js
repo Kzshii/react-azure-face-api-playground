@@ -11,9 +11,11 @@ const IdentifyFaceForm = ({
     faceId,
     identifyAttributes,
     candidates,
+    confidenceThreshold,
     personGroupId,
     setFaceId,
     setCandidates,
+    setConfidenceThreshold,
     setPersonGroupId,
     setIdentifyAttributes,
     ...props
@@ -42,22 +44,18 @@ const IdentifyFaceForm = ({
                     faceId,
                     candidates,
                     personGroupId,
+                    confidenceThreshold,
                 };
 
                 identifyFace(params)
                     .then((response) => response.json())
-                    .then((body) => identifyAttributes(
-                        body.faceId,
-                        body.candidates, 
-                        body.confidence, 
-                        body.personId)
-                    )
+                    .then((body) => setIdentifyAttributes(body.personGroupId))
                     .catch(console.error);
             }}>Identify Face</button>
             <br />
             {
                 identifyAttributes
-                    && <p>Last Created PersistedFaceId: {setIdentifyAttributes}</p>
+                    && <p>Last Created PersistedFaceId: {identifyAttributes}</p>
             }
        </div>
     )  
@@ -65,6 +63,7 @@ const IdentifyFaceForm = ({
 
 const enhance = compose (
     withState('candidates', 'setCandidates', null),
+    withState('confidenceThreshold', 'setConfidenceThreshold', null),
     withState('faceId', 'setFaceId', null),
     withState('personGroupId', 'setPersonGroupId', null),
     withState('identifyAttributes', 'setIdentifyAttributes', null),
