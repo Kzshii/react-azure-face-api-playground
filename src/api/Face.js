@@ -5,32 +5,21 @@ const headers = {
     'Ocp-Apim-Subscription-Key': process.env.AZURE_FACE_API_KEY,
 };
 
-const get = (path) => fetch(`${faceApiBaseUrl}${path}`, {
-    method:'GET',
-    headers 
-});
+const createFetch = (path, params) => {
+    return fetch(`${faceApiBaseUrl}${path}`, params);
+};
 
-const put = (path,body) => fetch(`${faceApiBaseUrl}${path}`, {
-    method:'PUT',
-    headers,
-    body 
-});
-
-const post = (path,body) => fetch(`${faceApiBaseUrl}${path}`, {
-    method:'POST',
-    headers,
-    body 
-});
-
-const del = (path,body) => fetch(`${faceApiBaseUrl}${path}`, {
-    method:'DELETE',
-    headers,
-    body,
-});
+const createMethodHandler = (method) => {
+    return (path, body) => createFetch(path, {
+        method,
+        headers,
+        body: method !== 'GET' && body,
+    });
+};  
 
 export default {
-    get,
-    put,
-    post,
-    del,
+    get: createMethodHandler('GET'),
+    put: createMethodHandler('PUT'),
+    post: createMethodHandler('POST'),
+    del: createMethodHandler('DELETE'),
 };
