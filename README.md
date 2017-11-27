@@ -14,6 +14,7 @@ Actually it has these functionalities implemented:
  - [x] Create Person into Person Group
  - [x] Add Face to Person
  - [x] Detect and create a Face Id
+ - [x] Train Person Group
  - [] Identify Face Id
 
 ## How to run it
