@@ -35,7 +35,7 @@ const DetectFaceForm = ({
 
                 detectFace(params)
                     .then((response) => response.json())
-                    .then((body) => setLastDetectedFaceId(body.faceId))
+                    .then((body) => setLastDetectedFaceId(body[0].faceId))
                     .catch(console.error);
             }}>Detect Face</button>
             <br />
@@ -48,8 +48,8 @@ const DetectFaceForm = ({
 }
 
 const enhance = compose (
-    withState('url', 'setUrl', null),
-    withState('returnFaceId', 'setReturnFaceId', null),
+    withState('url', 'setUrl', ''),
+    withState('returnFaceId', 'setReturnFaceId', ''),
     withState('lastDetectedFaceId', 'setLastDetectedFaceId', null),
     withProps((props) => ({ 
         ...props,

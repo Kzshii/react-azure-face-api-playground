@@ -68,9 +68,9 @@ const AddPersonFaceForm = ({
 }
 
 const enhance = compose (
-    withState('url', 'setUrl', null),
-    withState('personId', 'setPersonId', null),
-    withState('personGroupId', 'setPersonGroupId', null),
+    withState('url', 'setUrl', ''),
+    withState('personId', 'setPersonId', ''),
+    withState('personGroupId', 'setPersonGroupId', ''),
     withState('lastCreatedPersistedFaceId', 'setLastCreatedPersistedFaceId', null),
     withProps((props) => ({ 
         ...props,

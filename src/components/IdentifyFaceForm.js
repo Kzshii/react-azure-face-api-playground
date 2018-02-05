@@ -10,12 +10,8 @@ import { identifyFace } from '../api/Identify';
 const IdentifyFaceForm = ({
     faceId,
     identifyAttributes,
-    candidates,
-    confidenceThreshold,
     personGroupId,
     setFaceId,
-    setCandidates,
-    setConfidenceThreshold,
     setPersonGroupId,
     setIdentifyAttributes,
     ...props
@@ -40,17 +36,15 @@ const IdentifyFaceForm = ({
             </label>
             <br />
             <button onClick={() => {
-                const params = {
+                const params = { 
                     faceId,
-                    candidates,
                     personGroupId,
-                    confidenceThreshold,
                 };
 
                 identifyFace(params)
                     .then((response) => response.json())
                     .then((body) => setIdentifyAttributes(body.personGroupId))
-                    .catch(console.error);
+                    .catch(console.log(faceId));
             }}>Identify Face</button>
             <br />
             {
@@ -62,10 +56,8 @@ const IdentifyFaceForm = ({
 }
 
 const enhance = compose (
-    withState('candidates', 'setCandidates', null),
-    withState('confidenceThreshold', 'setConfidenceThreshold', null),
-    withState('faceId', 'setFaceId', null),
-    withState('personGroupId', 'setPersonGroupId', null),
+    withState('faceId', 'setFaceId', []),
+    withState('personGroupId', 'setPersonGroupId', ''),
     withState('identifyAttributes', 'setIdentifyAttributes', null),
     withProps((props) => ({ 
         ...props,

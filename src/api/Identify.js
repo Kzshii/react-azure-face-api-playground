@@ -1,13 +1,13 @@
 import face from './Face';
 
 const identifyFace = ({
-    faceIds,
+    faceId,
     personGroupId,
 }) => {
-    const requestUrl = 'face/v1.0/identify';
-    const body = JSON.stringify( faceIds, personGroupId);
+    const requestUrl = '/face/v1.0/identify';
+    const body = JSON.stringify( faceId, personGroupId);
 
-    return face.post( requestUrl, body );   
+    return face.post( requestUrl, [body] );   
 }
 
 export {

@@ -9,18 +9,10 @@ import { statusTrainPersonGroupId } from '../api/Train';
 
 const StatusTrainPersonGroupId = ({
     personGroupId,
-    status,
-    createdDateTime,
-    lastActionDateTime,
-    message,
+    trainPersonGroupStatus,
+    setTrainPersonGroupStatus,
     trainPersonGroupId,
-    checkTrainPersonGroupId,
     setPersonGroupId,
-    setStatus,
-    setCreatedDateTime,
-    setMessage,
-    setTrainPersonGroupId,
-    setCheckTrainPersonGroupId,
     ...props
 }) => {
     return (
@@ -37,34 +29,25 @@ const StatusTrainPersonGroupId = ({
             <button onClick={() => {
                 const params = {
                     personGroupId,
-                    status,
-                    createdDateTime,
-                    lastActionDateTime,
-                    message
                 };
 
                 statusTrainPersonGroupId(params)
                     .then((response) => response.json())
-                    .then((body) => setCheckTrainPersonGroupId(body.status))
+                    .then((body) => setTrainPersonGroupStatus(body.status))
                     .catch(console.error);
             }}>Train Person Group Id</button>
             <br />
             {
-                checkTrainPersonGroupId
-                && <p>Status: {checkTrainPersonGroupId}</p>
+                trainPersonGroupStatus
+                && <p>Status: {trainPersonGroupStatus}</p>
             }
         </div>
     )
 }
 
 const enhance = compose(
-    withState('personGroupId', 'setPersonGroupId', null),
-    withState('status', 'setStatus', null),
-    withState('createdDateTime', 'setCreatedDateTime', null),
-    withState('lastActionDateTime', 'setLastActionDateTime', null),
-    withState('message', 'setMessage', null),
-    withState('trainPersonGroupId', 'setTrainPersonGroupId', null),
-    withState('checkTrainPersonGroupId', 'setCheckTrainPersonGroupId', null),
+    withState('personGroupId', 'setPersonGroupId', ''),
+    withState('trainPersonGroupStatus', 'setTrainPersonGroupStatus', null),
     withProps((props) => ({
         ...props,
         statusTrainPersonGroupId,

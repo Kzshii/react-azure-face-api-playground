@@ -29,7 +29,6 @@ const TrainPersonGroupId = ({
                 };
 
                 trainPersonGroupId(params)
-                    .then((response) => response.json())
                     .catch(console.error);
             }}>Train Person Group Id</button>
             <br />
@@ -38,7 +37,7 @@ const TrainPersonGroupId = ({
 }
 
 const enhance = compose(
-    withState('personGroupId', 'setPersonGroupId', null),
+    withState('personGroupId', 'setPersonGroupId', ''),
     withProps((props) => ({
         ...props,
         trainPersonGroupId,

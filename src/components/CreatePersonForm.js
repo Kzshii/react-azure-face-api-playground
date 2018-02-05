@@ -56,8 +56,8 @@ const CreatePersonForm = ({
 }
 
 const enhance = compose (
-    withState('personGroupId', 'setPersonGroupId', null),
-    withState('personName', 'setPersonName', null),
+    withState('personGroupId', 'setPersonGroupId', ''),
+    withState('personName', 'setPersonName', ''),
     withState('lastCreatedPersonId', 'setLastCreatedPersonId', null),
     withProps((props) => ({ 
         ...props,
