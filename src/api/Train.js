@@ -6,14 +6,9 @@ const getPersonsUrlByGroupId = (personGroupId) => {
 
 const statusTrainPersonGroupId = ({
     personGroupId,
-    status,
-    createdDateTime,
-    lastActionDateTime,
-    message
 }) => {
     const url = `${getPersonsUrlByGroupId(personGroupId)}/training`;
-    const body = JSON.stringify(status, createdDateTime, lastActionDateTime, message);
-    return face.get(url, body)
+    return face.get(url)
 };
 
 const trainPersonGroupId = ({

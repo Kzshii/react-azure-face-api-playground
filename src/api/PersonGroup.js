@@ -9,7 +9,7 @@ const createPersonGroup = ({
 }) => {
     const url = `${personGroupBaseUrl}${id}`;
     const body = JSON.stringify({ name, userData, id });
-
+    console.log(body)
     return face.put(url, body);
 };
 

@@ -8,7 +8,7 @@ import {
 import { identifyFace } from '../api/Identify';
 
 const IdentifyFaceForm = ({
-    faceId,
+    faceIds,
     identifyAttributes,
     personGroupId,
     setFaceId,
@@ -30,33 +30,33 @@ const IdentifyFaceForm = ({
             <label>
                 Face Id
                 <input
-                    value={faceId}
+                    value={faceIds}
                     onChange={e => setFaceId(e.target.value)}
                 />
             </label>
             <br />
             <button onClick={() => {
                 const params = { 
-                    faceId,
+                    faceIds,
                     personGroupId,
                 };
 
                 identifyFace(params)
                     .then((response) => response.json())
-                    .then((body) => setIdentifyAttributes(body.personGroupId))
-                    .catch(console.log(faceId));
+                    .then((body) => setIdentifyAttributes(body[0].candidates[0].personId))
+                    .catch(console.error());
             }}>Identify Face</button>
             <br />
             {
                 identifyAttributes
-                    && <p>Last Created PersistedFaceId: {identifyAttributes}</p>
+                    && <p>Candidate FaceId: {identifyAttributes}</p>
             }
        </div>
     )  
 }
 
 const enhance = compose (
-    withState('faceId', 'setFaceId', []),
+    withState('faceIds', 'setFaceId', ''),
     withState('personGroupId', 'setPersonGroupId', ''),
     withState('identifyAttributes', 'setIdentifyAttributes', null),
     withProps((props) => ({ 
